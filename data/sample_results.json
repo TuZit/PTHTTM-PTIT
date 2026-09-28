@@ -1,0 +1,70 @@
+{
+  "AI applications in healthcare": [
+    {
+      "title": "Artificial Intelligence in Healthcare - World Health Organization",
+      "url": "https://www.who.int/news-room/fact-sheets/detail/artificial-intelligence-in-health",
+      "content": "Artificial intelligence (AI) is being adopted across health systems for diagnosis, treatment planning, drug discovery and health administration. WHO notes that AI can improve access to care in underserved regions, for example through mobile screening tools, but warns that benefits depend on reliable local data, workforce training and strong governance. The organization recommends that AI tools be evaluated for safety, transparency and equity before large-scale deployment."
+    },
+    {
+      "title": "AI in Health Care: Applications and Policy Considerations",
+      "url": "https://www.mckinsey.com/industries/healthcare/our-insights/ai-in-health-care",
+      "content": "Hospitals and life-science companies use AI mainly for administrative automation, clinical documentation, patient triage and imaging analysis. Reported productivity gains range from 10% to 30% in document-heavy workflows. Adoption barriers include fragmented data systems, unclear reimbursement models and the cost of integrating new tools into existing electronic health records."
+    },
+    {
+      "title": "Artificial Intelligence in Medicine - Nature Reviews",
+      "url": "https://www.nature.com/articles/s41591-023-ai-medicine-review",
+      "content": "The review surveys machine-learning models applied to radiology, pathology, cardiology, ophthalmology and genomics. It reports that several algorithms match specialist-level performance on narrow tasks such as diabetic retinopathy screening and mammography reading, but generalization to new hospitals remains a challenge. The authors call for prospective clinical trials and standardized reporting."
+    }
+  ],
+  "AI medical diagnosis and imaging": [
+    {
+      "title": "AI-Enabled Medical Imaging Devices - U.S. Food and Drug Administration",
+      "url": "https://www.fda.gov/medical-devices/software-medical-device-samd/artificial-intelligence-enabled-medical-devices",
+      "content": "The FDA has authorized a large and growing number of AI-enabled medical devices, the majority of which are radiology software. Common clearances cover lesion detection, image enhancement and triage prioritization. The agency maintains a public list of authorized devices and emphasizes that cleared software is intended to assist, not replace, a qualified clinician."
+    },
+    {
+      "title": "Diagnostic accuracy of deep learning in medical imaging: a systematic review",
+      "url": "https://www.nih.gov/research/deep-learning-medical-imaging-systematic-review",
+      "content": "Pooled evidence shows deep-learning models achieve high sensitivity and specificity for image-based diagnosis, often comparable to clinicians in controlled retrospective settings. The main methodological weaknesses are limited external validation, small and unbalanced datasets, and inconsistent comparison with clinical workflows. Prospective studies remain uncommon."
+    },
+    {
+      "title": "Early detection of disease with AI: clinical evidence and limitations",
+      "url": "https://www.thelancet.com/journals/landig/ai-early-detection",
+      "content": "AI-supported screening can shorten reporting times and improve early detection for some cancers and eye diseases. However, evidence also shows that model performance can degrade when patient demographics differ from the training population, and that false positives create downstream costs and patient anxiety. Ongoing monitoring after deployment is therefore recommended."
+    }
+  ],
+  "AI in healthcare challenges and risks": [
+    {
+      "title": "Ethics and governance of artificial intelligence for health - WHO guidance",
+      "url": "https://www.who.int/publications/i/item/ethics-and-governance-of-artificial-intelligence-for-health",
+      "content": "WHO guidance identifies six core ethical principles for AI in health: protecting human autonomy, promoting human well-being and safety, ensuring transparency and explainability, fostering responsibility and accountability, ensuring inclusiveness and equity, and promoting responsive and sustainable AI. It highlights risks of bias, surveillance and commercial pressure to overstate benefits."
+    },
+    {
+      "title": "Privacy and security risks of AI in healthcare",
+      "url": "https://www.hhs.gov/hipaa/ai-health-data-privacy",
+      "content": "AI systems depend on large volumes of sensitive health data, increasing the risk of re-identification, unauthorized secondary use and data breaches. Recommended controls include de-identification, strict access management, audit logging and contractual limits on how vendors may reuse patient data. Regulatory frameworks such as HIPAA and GDPR constrain but do not fully resolve these risks."
+    },
+    {
+      "title": "Algorithmic bias in clinical AI and mitigation strategies",
+      "url": "https://www.nature.com/articles/s41746-021-algorithmic-bias-clinical-ai",
+      "content": "Clinical algorithms trained on historically biased data can underperform for minority, low-income or rural populations. Documented examples concern kidney function estimation, pain management and risk scoring. Mitigation strategies include representative data collection, subgroup performance reporting, fairness audits and clinician review of automated recommendations."
+    }
+  ],
+  "_default": [
+    {
+      "title": "Artificial intelligence - overview and current applications",
+      "url": "https://en.wikipedia.org/wiki/Artificial_intelligence",
+      "content": "Artificial intelligence refers to systems that perform tasks normally requiring human intelligence, such as learning, reasoning, perception and language understanding. Modern applications are dominated by machine learning and large language models, and are widely used in search, recommendations, translation, coding assistance and scientific research."
+    },
+    {
+      "title": "Large language models explained",
+      "url": "https://www.ibm.com/think/topics/large-language-models",
+      "content": "Large language models are neural networks trained on very large text corpora to predict the next token. They can summarize, translate, write code and answer questions, but they can also generate plausible yet incorrect statements. Providing reliable context in the prompt, a technique often called retrieval-augmented generation, reduces this risk."
+    },
+    {
+      "title": "Retrieval-augmented generation (RAG) in practice",
+      "url": "https://research.ibm.com/blog/retrieval-augmented-generation-RAG",
+      "content": "Retrieval-augmented generation combines a search step with a language model. Relevant documents are retrieved from an external source and inserted into the prompt so the model can ground its answer in real, up-to-date information and cite sources instead of relying only on its training data."
+    }
+  ]
+}

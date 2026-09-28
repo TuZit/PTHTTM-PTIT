@@ -1,0 +1,4 @@
+jupyter>=1.0
+python-dotenv>=1.0
+langchain-openai>=0.2
+tavily-python>=0.5

@@ -1,0 +1,20 @@
+# --- Secrets --------------------------------------------------------------
+.env
+
+# --- Python ---------------------------------------------------------------
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+
+# --- Jupyter --------------------------------------------------------------
+.ipynb_checkpoints/
+
+# --- Lab output (regenerated every time the notebook runs) ----------------
+research_report.md
+
+# --- OS / editor ----------------------------------------------------------
+.DS_Store
+.vscode/
+.idea/
