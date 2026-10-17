@@ -15,3 +15,16 @@ dependencies = [
     "langgraph>=1.2.11",
     "langgraph-cli[inemem,inmem]>=0.4.31",
 ]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-m 'not live'"          # mặc định chạy OFFLINE (mock), không tốn API
+markers = [
+    "live: test gọi API thật DeepSeek + Tavily (bật bằng: uv run pytest -m live)",
+]
