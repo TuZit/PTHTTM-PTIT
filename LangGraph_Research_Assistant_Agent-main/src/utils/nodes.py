@@ -1,6 +1,6 @@
 from src.utils.states import GenerateAnalystsState, InterviewState, ResearchGraphState
 from src.utils.objects import Perspectives, Analyst
-from src.utils.models import llm
+from src.utils.models import llm, output_language
 from langchain.messages import SystemMessage, HumanMessage
 from src.utils.prompts import analyst_instructions, question_instructions, answer_instructions, section_writer_instructions, report_writer_instructions, intro_conclusion_instructions
 from dotenv import load_dotenv
@@ -30,8 +30,9 @@ def create_analysts(state: GenerateAnalystsState):
 
     # System message
     system_message = analyst_instructions.format(topic=topic,
-                                                            human_analyst_feedback=human_analyst_feedback, 
-                                                            max_analysts=max_analysts)
+                                                            human_analyst_feedback=human_analyst_feedback,
+                                                            max_analysts=max_analysts,
+                                                            language=output_language)
 
     # Generate question 
     analysts = structured_llm.invoke([SystemMessage(content=system_message)]+[HumanMessage(content="Generate the set of analysts.")])
@@ -84,7 +85,7 @@ def generate_question(state: InterviewState):
     messages = state["messages"]
 
     # Generate question 
-    system_message = question_instructions.format(goals=analyst.persona)
+    system_message = question_instructions.format(goals=analyst.persona, language=output_language)
     question = llm.invoke([SystemMessage(content=system_message)]+messages)
         
     # Write messages to state
@@ -113,7 +114,7 @@ def write_section(state: InterviewState):
             analyst = Analyst.model_validate(analyst)
     
     # Write section using either the gathered source docs from interview (context) or the interview itself (interview)
-    system_message = section_writer_instructions.format(focus=analyst.description)
+    system_message = section_writer_instructions.format(focus=analyst.description, language=output_language)
     section = llm.invoke([SystemMessage(content=system_message)]+[HumanMessage(content=f"Use this source to write your section: {context}")]) 
                 
     # Append it to state
@@ -132,7 +133,7 @@ def generate_answer(state: InterviewState):
             analyst = Analyst.model_validate(analyst)
 
     # Answer question
-    system_message = answer_instructions.format(goals=analyst.persona, context=context)
+    system_message = answer_instructions.format(goals=analyst.persona, context=context, language=output_language)
     answer = llm.invoke([SystemMessage(content=system_message)]+messages)
             
     # Name the message as coming from the expert
@@ -234,7 +235,7 @@ def write_report(state: ResearchGraphState):
     formatted_str_sections = "\n\n".join([f"{section}" for section in sections])
     
     # Summarize the sections into a final report
-    system_message = report_writer_instructions.format(topic=topic, context=formatted_str_sections)    
+    system_message = report_writer_instructions.format(topic=topic, context=formatted_str_sections, language=output_language)
     report = llm.invoke([SystemMessage(content=system_message)]+[HumanMessage(content=f"Write a report based upon these memos.")]) 
     return {"content": report.content}
 
@@ -248,7 +249,7 @@ def write_introduction(state: ResearchGraphState):
     
     # Summarize the sections into a final report
     
-    instructions = intro_conclusion_instructions.format(topic=topic, formatted_str_sections=formatted_str_sections)    
+    instructions = intro_conclusion_instructions.format(topic=topic, formatted_str_sections=formatted_str_sections, language=output_language)
     intro = llm.invoke([instructions]+[HumanMessage(content=f"Write the report introduction")]) 
     return {"introduction": intro.content}
 
@@ -263,7 +264,7 @@ def write_conclusion(state: ResearchGraphState):
     
     # Summarize the sections into a final report
     
-    instructions = intro_conclusion_instructions.format(topic=topic, formatted_str_sections=formatted_str_sections)    
+    instructions = intro_conclusion_instructions.format(topic=topic, formatted_str_sections=formatted_str_sections, language=output_language)
     conclusion = llm.invoke([instructions]+[HumanMessage(content=f"Write the report conclusion")]) 
     return {"conclusion": conclusion.content}
 

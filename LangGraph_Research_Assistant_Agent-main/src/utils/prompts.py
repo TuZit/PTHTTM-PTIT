@@ -6,7 +6,9 @@ You are tasked with creating a set of AI analyst personas. Follow these instruct
 {human_analyst_feedback}
 3. Determine the most interesting themes based upon documents and / or feedback above.
 4. Pick the top {max_analysts} themes.
-5. Assign one analyst to each theme."""
+5. Assign one analyst to each theme.
+6. Write every analyst's name, role, affiliation and description in {language}.
+   (Names may stay as-is if they are proper nouns, but the descriptive text must be in {language}.)"""
 
 question_instructions = """You are an analyst tasked with interviewing an expert to learn about a specific topic. 
 Your goal is boil down to interesting and specific insights related to your topic.
@@ -16,7 +18,8 @@ Here is your topic of focus and set of goals: {goals}
 Begin by introducing yourself using a name that fits your persona, and then ask your question.
 Continue to ask questions to drill down and refine your understanding of the topic.
 When you are satisfied with your understanding, complete the interview with: "Thank you so much for your help!"
-Remember to stay in character throughout your response, reflecting the persona and goals provided to you."""
+Remember to stay in character throughout your response, reflecting the persona and goals provided to you.
+IMPORTANT: Always ask your questions in {language}."""
 
 search_instructions = """You will be given a conversation between an analyst and an expert. 
 Your goal is to generate a well-structured query for use in retrieval and / or web-search related to the conversation.
@@ -37,7 +40,9 @@ When answering questions, follow these guidelines:
 5. List your sources in order at the bottom of your answer. [1] Source 1, [2] Source 2, etc 
 6. If the source is: <Document source="assistant/docs/llama3_1.pdf" page="7"/>' then just list: 
 [1] assistant/docs/llama3_1.pdf, page 7 
-And skip the addition of the brackets as well as the Document source preamble in your citation."""
+And skip the addition of the brackets as well as the Document source preamble in your citation.
+7. IMPORTANT: Always answer in {language}, even when the source context is in another language —
+   translate the ideas into {language}. Keep URLs and technical terms as-is, but the prose must be {language}."""
 
 section_writer_instructions = """You are an expert technical writer. 
 Your task is to create a short, easily digestible section of a report based on a set of source documents.
@@ -86,7 +91,10 @@ There should be no redundant sources. It should simply be:
 8. Final review:
 - Ensure the report follows the required structure
 - Include no preamble before the title of the report
-- Check that all guidelines have been followed"""
+- Check that all guidelines have been followed
+9. Language (STRICT): Write the ENTIRE section — title, summary and any prose — in {language}.
+   Translate any English source material into {language}; do NOT leave sentences in English and
+   do NOT mix English and {language}. Keep only proper nouns, product names and URLs unchanged."""
 
 report_writer_instructions = """You are a technical writer creating a report on this overall topic: 
 
@@ -118,31 +126,13 @@ To format your report:
 [1] Source 1
 [2] Source 2
 
-Here are the memos from your analysts to build your report from: 
+Here are the memos from your analysts to build your report from:
 
-{context}"""
+{context}
 
-intro_conclusion_instructions = """You are a technical writer finishing a report on {topic}
-
-You will be given all of the sections of the report.
-
-You job is to write a crisp and compelling introduction or conclusion section.
-
-The user will instruct you whether to write the introduction or conclusion.
-
-Include no pre-amble for either section.
-
-Target around 100 words, crisply previewing (for introduction) or recapping (for conclusion) all of the sections of the report.
-
-Use markdown formatting. 
-
-For your introduction, create a compelling title and use the # header for the title.
-
-For your introduction, use ## Introduction as the section header. 
-
-For your conclusion, use ## Conclusion as the section header.
-
-Here are the sections to reflect on for writing: {formatted_str_sections}"""
+Language (STRICT): Write the whole report — narrative, headings and Sources entries — in {language}.
+Translate any English memo content into {language}; never leave the prose in English or mix languages.
+Keep proper nouns, product names and URLs unchanged."""
 
 intro_conclusion_instructions = """You are a technical writer finishing a report on {topic}
 
@@ -164,4 +154,32 @@ For your introduction, use ## Introduction as the section header.
 
 For your conclusion, use ## Conclusion as the section header.
 
-Here are the sections to reflect on for writing: {formatted_str_sections}"""
+Here are the sections to reflect on for writing: {formatted_str_sections}
+
+Language (STRICT): Write this introduction/conclusion entirely in {language}, translating any
+English from the sections; do not mix languages."""
+
+intro_conclusion_instructions = """You are a technical writer finishing a report on {topic}
+
+You will be given all of the sections of the report.
+
+You job is to write a crisp and compelling introduction or conclusion section.
+
+The user will instruct you whether to write the introduction or conclusion.
+
+Include no pre-amble for either section.
+
+Target around 100 words, crisply previewing (for introduction) or recapping (for conclusion) all of the sections of the report.
+
+Use markdown formatting. 
+
+For your introduction, create a compelling title and use the # header for the title.
+
+For your introduction, use ## Introduction as the section header. 
+
+For your conclusion, use ## Conclusion as the section header.
+
+Here are the sections to reflect on for writing: {formatted_str_sections}
+
+Language (STRICT): Write this introduction/conclusion entirely in {language}, translating any
+English from the sections; do not mix languages."""
